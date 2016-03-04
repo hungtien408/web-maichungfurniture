@@ -14,11 +14,11 @@ public partial class lien_he : System.Web.UI.Page
     }
     private void sendEmail()
     {
-        string msg = "<h3>THIEN PHAT VINA: CONTACT</h3><br/>";
+        string msg = "<h3>MAI CHUNG FURNITURE: CONTACT</h3><br/>";
         msg += "<b>Full name: </b>" + txtFullName.Text.Trim().ToString() + "<br />";
         msg += "<b>Email: </b>" + txtEmail.Text.Trim().ToString() + "<br />";
         msg += "<b>Content: </b>" + txtNoiDung.Text.Trim().ToString();
-        Common.SendMail("118.69.193.238", 25, "webmaster@thietkewebhcm.com", "web123master", "info@thienphatvina.com.vn", "", "Contact THIEN PHAT VINA", msg, false);
+        Common.SendMail("118.69.193.238", 25, "webmaster@thietkewebhcm.com", "web123master", "hungtien408@gmail.com", "", "Contact MAI CHUNG FURNITURE", msg, false);
     }
     protected void btGui_Click(object sender, EventArgs e)
     {

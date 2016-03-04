@@ -277,13 +277,14 @@
                                     Culture="vi-VN" Language="vi-VN" InputSize="70" AllowedFileExtensions=".jpg,.jpeg,.gif,.png" />
                                 <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Sai định dạng ảnh (*.jpg, *.jpeg, *.gif, *.png)"
                                     ClientValidationFunction="validateRadUpload" Display="Dynamic"></asp:CustomValidator>
+                                <span class="required">(Kích thước 850px x 850px)</span>
                             </td>
                             <td rowspan="5" valign="top">
                                 <asp:RadBinaryImage Style="display: block;" runat="server" ID="RadBinaryImage1" ImageUrl='<%# "~/res/product/album/" + Eval("ImageName") %>'
                                     Height='150' Width="150" ResizeMode="Fit" />
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="invisible">
                             <td class="left">
                                 Tiêu đề ảnh
                             </td>
@@ -291,7 +292,7 @@
                                 <asp:TextBox ID="txtTitle" Width="500px" runat="server" Text='<%# Bind("Title") %>'></asp:TextBox>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="invisible">
                             <td class="left" valign="top">
                                 Mô tả
                             </td>
@@ -299,7 +300,7 @@
                                 <asp:TextBox ID="txtDescription" runat="server" Width="500px" Text='<%# Bind("Descripttion")%>'></asp:TextBox>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="invisible">
                             <td class="left">
                                 Tiêu đề ảnh(En)
                             </td>
@@ -307,7 +308,7 @@
                                 <asp:TextBox ID="txtTitleEn" Width="500px" runat="server" Text='<%# Bind("TitleEn") %>'></asp:TextBox>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="invisible">
                             <td class="left" valign="top">
                                 Mô tả(En)
                             </td>
