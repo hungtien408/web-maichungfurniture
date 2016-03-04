@@ -1,0 +1,97 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/site.master" AutoEventWireup="true" CodeFile="site-product.master.cs"
+    Inherits="site_product" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div id="site" class="corner">
+        <div class="container">
+            <a id="A1" href="~/" runat="server"><span class="fa fa-home"></span></a>/
+            <asp:ContentPlaceHolder ID="cphSite" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapper-main">
+            <div id="colAside">
+                <h4 class="title-a">
+                    Danh mục sản phẩm</h4>
+                <asp:ListView ID="lstProductCategory" runat="server" DataSourceID="odsProductCategory"
+                    EnableModelValidation="True">
+                    <ItemTemplate>
+                        <li><a href='<%# progressTitle(Eval("ProductCategoryName")) + "-pci-" + Eval("ProductCategoryID") + ".aspx" %>'>
+                            <%# Eval("ProductCategoryName") %></a>
+                            <asp:HiddenField ID="hdnParentIDSub" runat="server" Value='<%# Eval("ProductCategoryID")%>' />
+                            <asp:ListView ID="lstProductCategorySub" runat="server" DataSourceID="odsProductCategorySub"
+                                EnableModelValidation="True">
+                                <ItemTemplate>
+                                    <li><a href='<%# progressTitle(Eval("ProductCategoryName")) + "-pci-" + Eval("ProductCategoryID") + ".aspx" %>'>
+                                        <%# Eval("ProductCategoryName") %></a>
+                                </ItemTemplate>
+                                <LayoutTemplate>
+                                    <ul data-level="level-1">
+                                        <li runat="server" id="itemPlaceholder"></li>
+                                    </ul>
+                                </LayoutTemplate>
+                            </asp:ListView>
+                            <asp:ObjectDataSource ID="odsProductCategorySub" runat="server" SelectMethod="ProductCategorySelectAll"
+                                TypeName="TLLib.ProductCategory">
+                                <SelectParameters>
+                                    <asp:ControlParameter ControlID="hdnParentIDSub" Name="parentID" PropertyName="Value"
+                                        Type="Int32" />
+                                    <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+                                    <asp:Parameter DefaultValue="True" Name="IsShowOnMenu" Type="String" />
+                                    <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                </SelectParameters>
+                            </asp:ObjectDataSource>
+                        </li>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <ul id="menuProducts" class="menu-list menu-level text-uppercase" data-level="level">
+                            <li runat="server" id="itemPlaceholder"></li>
+                        </ul>
+                    </LayoutTemplate>
+                </asp:ListView>
+                <asp:ObjectDataSource ID="odsProductCategory" runat="server" SelectMethod="ProductCategorySelectAll"
+                    TypeName="TLLib.ProductCategory">
+                    <SelectParameters>
+                        <asp:Parameter DefaultValue="0" Name="parentID" Type="Int32" />
+                        <asp:Parameter DefaultValue="1" Name="increaseLevelCount" Type="Int32" />
+                        <asp:Parameter Name="IsShowOnMenu" Type="String" />
+                        <asp:Parameter DefaultValue="True" Name="IsShowOnHomePage" Type="String" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+            </div>
+            <div id="colContent">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+                <%--<h2 class="title-list mobile-showhide"><a class="panel-a" href="#mobileRight" data-position="false" data-type="false">Sản phẩm<span class="icona glyphicon glyphicon-chevron-down"></span></a></h2>--%>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="mobileAside">
+                <h4 class="title-a">
+                    Danh mục sản phẩm</h4>
+                <ul id="moProduct" class="menu-list menu-level text-uppercase" data-level="level">
+                </ul>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphMenuMobile" runat="Server">
+    <%--<div id="mobileRight" class="mobile-panel mobilep-right mobile-bg">
+        <div class="close-menu"><a href="#mobileRight" class="glyphicon glyphicon-remove-circle">close</a></div>
+        <div class="menu-in">
+            <div class="menu-mobile">
+                <h2 class="text-uppercase text-center title">danh mục sản phẩm</h2>
+                <ul id="menuProduct" class="menu-nav"></ul>
+            </div>
+        </div>
+    </div>--%>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="cphPopup" runat="Server">
+    <asp:ContentPlaceHolder ID="cphPopup" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
