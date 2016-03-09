@@ -121,28 +121,84 @@
                                 <div class="logo">
                                     <a href="#">
                                         <img src="assets/images/footer-logo.png" alt="logo" /></a></div>
-                                <div class="desription">
-                                    Skort Maison Martin Margiela knot ponytail cami texture tucked t-shirt. Black skirt
-                                    razor pleats plaited gold collar. Skort Maison Martin Margiela knot pony.</div>
+                                <asp:ListView ID="lstContentContact" runat="server" DataSourceID="odsContentContact"
+                                    EnableModelValidation="True">
+                                    <ItemTemplate>
+                                        <div class="desription">
+                                            <%# Eval("Content") %></div>
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <span runat="server" id="itemPlaceholder" />
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                                <asp:ObjectDataSource ID="odsContentContact" runat="server" SelectMethod="ArticleSelectAll"
+                                    TypeName="TLLib.Article">
+                                    <SelectParameters>
+                                        <asp:Parameter DefaultValue="1" Name="StartRowIndex" Type="String" />
+                                        <asp:Parameter DefaultValue="1" Name="EndRowIndex" Type="String" />
+                                        <asp:Parameter Name="Keyword" Type="String" />
+                                        <asp:Parameter Name="ArticleTitle" Type="String" />
+                                        <asp:Parameter Name="Description" Type="String" />
+                                        <asp:Parameter DefaultValue="3" Name="ArticleCategoryID" Type="String" />
+                                        <asp:Parameter Name="Tag" Type="String" />
+                                        <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                        <asp:Parameter Name="IsHot" Type="String" />
+                                        <asp:Parameter Name="IsNew" Type="String" />
+                                        <asp:Parameter Name="FromDate" Type="String" />
+                                        <asp:Parameter Name="ToDate" Type="String" />
+                                        <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                                        <asp:Parameter Name="Priority" Type="String" />
+                                        <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <h4 class="text-uppercase linb">
                                     <span>liên hệ</span></h4>
-                                <ul class="address">
-                                    <li><span class="fa fa-map-marker"></span>139 Ngô Gia Tự, Phương 2, Quận 10, Tp.HCM</li>
-                                    <li><span class="fa fa-phone"></span>094 456 9394 </li>
-                                    <li><span class="fa fa-envelope"></span><a href="mailto:chung.furniture@gmail.com">chung.furniture@gmail.com</a></li>
-                                </ul>
+                                <asp:ListView ID="lstContact" runat="server" DataSourceID="odsContact" EnableModelValidation="True">
+                                    <ItemTemplate>
+                                        <ul class="address">
+                                            <li><span class="fa fa-map-marker"></span>
+                                                <%# Eval("MetaTittle") %></li>
+                                            <li><span class="fa fa-phone"></span>
+                                                <%# Eval("MetaDescription")%>
+                                            </li>
+                                            <li><span class="fa fa-envelope"></span><a href='<%# "mailto:" + Eval("ArticleTitle")%>'>
+                                                <%# Eval("ArticleTitle")%></a></li>
+                                        </ul>
+                                    </ItemTemplate>
+                                    <LayoutTemplate>
+                                        <span runat="server" id="itemPlaceholder" />
+                                    </LayoutTemplate>
+                                </asp:ListView>
+                                <asp:ObjectDataSource ID="odsContact" runat="server" SelectMethod="ArticleSelectAll"
+                                    TypeName="TLLib.Article">
+                                    <SelectParameters>
+                                        <asp:Parameter DefaultValue="1" Name="StartRowIndex" Type="String" />
+                                        <asp:Parameter DefaultValue="1" Name="EndRowIndex" Type="String" />
+                                        <asp:Parameter Name="Keyword" Type="String" />
+                                        <asp:Parameter Name="ArticleTitle" Type="String" />
+                                        <asp:Parameter Name="Description" Type="String" />
+                                        <asp:Parameter DefaultValue="2" Name="ArticleCategoryID" Type="String" />
+                                        <asp:Parameter Name="Tag" Type="String" />
+                                        <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                                        <asp:Parameter Name="IsHot" Type="String" />
+                                        <asp:Parameter Name="IsNew" Type="String" />
+                                        <asp:Parameter Name="FromDate" Type="String" />
+                                        <asp:Parameter Name="ToDate" Type="String" />
+                                        <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                                        <asp:Parameter Name="Priority" Type="String" />
+                                        <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
                             </div>
                             <div class="col-lg-4 col-md-6">
                                 <h4 class="text-uppercase linb">
                                     <span>lượt truy cập</span></h4>
                                 <ul class="list-hit">
-                                    <li><span class="name">Đang Online:</span>  
-                                        <span id="online" runat="server"></span>
+                                    <li><span class="name">Đang Online:</span> <span id="online" runat="server"></span>
                                     </li>
-                                    <li><span class="name">Lượt truy cập:</span> 
-                                        <span id="visit" runat="server"></span>
+                                    <li><span class="name">Lượt truy cập:</span> <span id="visit" runat="server"></span>
                                     </li>
                                 </ul>
                             </div>

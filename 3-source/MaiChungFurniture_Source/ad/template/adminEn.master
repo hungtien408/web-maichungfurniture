@@ -136,6 +136,18 @@
                     <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Giới Thiệu"
                         Font-Bold="True" NavigateUrl="~/ad/single/aboutus.aspx" >
                     </asp:RadMenuItem>
+                    <asp:RadMenuItem runat="server" Owner="RadMenu1" PostBack="False" Text="Bài Viết"
+                        Font-Bold="True">
+                        <Items>
+                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/single/contact.aspx" Text="Liên Hệ">
+                            </asp:RadMenuItem>
+                            <asp:RadMenuItem runat="server" IsSeparator="True">
+                            </asp:RadMenuItem>
+                            <asp:RadMenuItem runat="server" NavigateUrl="~/ad/single/contentcontact.aspx"
+                                Text="Nội Dung Liên Hệ">
+                            </asp:RadMenuItem>
+                        </Items>
+                    </asp:RadMenuItem>
                     <asp:RadMenuItem runat="server" Text="Banner" PostBack="False" Font-Bold="True">
                         <Items>
                             <asp:RadMenuItem runat="server" NavigateUrl="~/ad/single/bannermain.aspx" Text="Banner Chính">
