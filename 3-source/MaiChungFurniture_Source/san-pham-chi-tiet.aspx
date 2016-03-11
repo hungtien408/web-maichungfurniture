@@ -18,29 +18,31 @@
             <div class="wrapper-details">
                 <div id="sliderDetails" class="detail-images">
                     <div class="wrap-images">
-                        <div class="detailimg-desktop">
-                            <div class="zoom-box">
-                                <a id="zoom1" href="assets/images/details-big-2.jpg" class="cloud-zoom" rel="showTitle: false, zoomWidth: '350', adjustY:0, adjustX:5">
-                                    <img class="img-responsive" src="assets/images/details-img-2.jpg" alt="" />
-                                </a>
-                            </div>
-                        </div>
-                        <div class="detailimg-mobile">
-                            <asp:ListView ID="lstProductAlbum" runat="server" DataSourceID="odsProductAlbum"
-                                EnableModelValidation="True">
-                                <ItemTemplate>
-                                    <div class="slide">
-                                        <img alt='<%# Eval("ImageName") %>' src='<%# !string.IsNullOrEmpty(Eval("ImageName").ToString()) ? "~/res/product/album/" + Eval("ImageName") : "~/assets/images/details-img-1.jpg" %>'
-                                            runat="server" />
+                        <asp:ListView ID="lstProductAlbum" runat="server" DataSourceID="odsProductAlbum"
+                            EnableModelValidation="True">
+                            <ItemTemplate>
+                                <div class="slide">
+                                    <img alt='<%# Eval("ImageName") %>' src='<%# !string.IsNullOrEmpty(Eval("ImageName").ToString()) ? "~/res/product/album/" + Eval("ImageName") : "~/assets/images/details-img-1.jpg" %>'
+                                        runat="server" />
+                                </div>
+                            </ItemTemplate>
+                            <LayoutTemplate>
+                                <div class="detailimg-desktop">
+                                    <div class="zoom-box">
+                                        <a id="zoom1" href='<%# !string.IsNullOrEmpty(Eval("ImageName").ToString()) ? "~/res/product/album/" + Eval("ImageName") : "~/assets/images/details-img-1.jpg" %>'
+                                            class="cloud-zoom" rel="showTitle: false, zoomWidth: '350', adjustY:0, adjustX:5">
+                                            <img class="img-responsive" src='<%# !string.IsNullOrEmpty(Eval("ImageName").ToString()) ? "~/res/product/album/" + Eval("ImageName") : "~/assets/images/details-img-1.jpg" %>'
+                                                alt="" />
+                                        </a>
                                     </div>
-                                </ItemTemplate>
-                                <LayoutTemplate>
+                                </div>
+                                <div class="detailimg-mobile">
                                     <div class="slider-for">
                                         <span runat="server" id="itemPlaceholder" />
                                     </div>
-                                </LayoutTemplate>
-                            </asp:ListView>
-                        </div>
+                                </div>
+                            </LayoutTemplate>
+                        </asp:ListView>
                     </div>
                     <div class="wrapper-in">
                         <div class="wrapper-7">
@@ -133,18 +135,21 @@
                 <ItemTemplate>
                     <div class="slide ">
                         <div class="product-box text-center">
-                            <a href='<%# progressTitle(Eval("ProductName")) + "-pci-" + Eval("CategoryID") + "-pi-" + Eval("ProductID") + ".aspx" %>' class="product-img fullbox-img contain-img">
+                            <a href='<%# progressTitle(Eval("ProductName")) + "-pci-" + Eval("CategoryID") + "-pi-" + Eval("ProductID") + ".aspx" %>'
+                                class="product-img fullbox-img contain-img">
                                 <img class="hideo" alt='<%# Eval("ImageName") %>' src='<%# !string.IsNullOrEmpty(Eval("ImageName").ToString()) ? "~/res/product/" + Eval("ImageName") : "~/assets/images/product-img-1.jpg" %>'
-                                        runat="server" />
+                                    runat="server" />
                                 <span class="icona-plus"><span></span></span></a>
                             <h4 class="product-name">
-                                <a href='<%# progressTitle(Eval("ProductName")) + "-pci-" + Eval("CategoryID") + "-pi-" + Eval("ProductID") + ".aspx" %>'><%# Eval("ProductName") %></a></h4>
+                                <a href='<%# progressTitle(Eval("ProductName")) + "-pci-" + Eval("CategoryID") + "-pi-" + Eval("ProductID") + ".aspx" %>'>
+                                    <%# Eval("ProductName") %></a></h4>
                             <div class="product-code">
                                 <%# Eval("Tag") %></div>
                             <div class="product-price">
-                                <del><%# (string.Format("{0:##,###.##}", Eval("SavePrice")).Replace('.', '*').Replace(',', '.').Replace('*', ',')) %><%# string.IsNullOrEmpty(Eval("SavePrice").ToString()) ? "" : "đ"%>
-                                    </del><strong>
-                                        <%# string.IsNullOrEmpty(Eval("OtherPrice").ToString()) ?(string.Format("{0:##,###.##}", Eval("Price")).Replace('.', '*').Replace(',', '.').Replace('*', ',')) :  Eval("OtherPrice") %><%# string.IsNullOrEmpty(Eval("Price").ToString()) ? "" : "đ"%></strong>
+                                <del>
+                                    <%# (string.Format("{0:##,###.##}", Eval("SavePrice")).Replace('.', '*').Replace(',', '.').Replace('*', ',')) %><%# string.IsNullOrEmpty(Eval("SavePrice").ToString()) ? "" : "đ"%>
+                                </del><strong>
+                                    <%# string.IsNullOrEmpty(Eval("OtherPrice").ToString()) ?(string.Format("{0:##,###.##}", Eval("Price")).Replace('.', '*').Replace(',', '.').Replace('*', ',')) :  Eval("OtherPrice") %><%# string.IsNullOrEmpty(Eval("Price").ToString()) ? "" : "đ"%></strong>
                             </div>
                         </div>
                     </div>
@@ -155,12 +160,12 @@
                     </div>
                 </LayoutTemplate>
             </asp:ListView>
-            <asp:ObjectDataSource ID="odsProductSame" runat="server" 
-                SelectMethod="ProductSameSelectAll" TypeName="TLLib.Product">
+            <asp:ObjectDataSource ID="odsProductSame" runat="server" SelectMethod="ProductSameSelectAll"
+                TypeName="TLLib.Product">
                 <SelectParameters>
                     <asp:Parameter DefaultValue="10" Name="RerultCount" Type="String" />
-                    <asp:QueryStringParameter DefaultValue="" Name="ProductID" 
-                        QueryStringField="pi" Type="String" />
+                    <asp:QueryStringParameter DefaultValue="" Name="ProductID" QueryStringField="pi"
+                        Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>
