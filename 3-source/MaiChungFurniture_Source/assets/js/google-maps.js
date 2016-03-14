@@ -40,7 +40,7 @@ window.onload = function () {
 
         // Creating the content  
         var content = '<div class="box">' +
-            '<h4 class="title-2">MC</h4>' +
+            '<h4 class="title-2">Nội Thất Mai Chung</h4>' +
             '<p><span class="fa fa-map-marker"></span>666/59/8 Đường 3 tháng 2, Phương 14, Quận 10, Tp.HCM</p>' +
             '<p><span class="fa fa-phone"></span>08.22397788 - 0944569394</p>' + 
             '<p><span class="fa fa-envelope"></span><a href="mailto:chung.furniture@gmail.com">chung.furniture@gmail.com</a></p>' +

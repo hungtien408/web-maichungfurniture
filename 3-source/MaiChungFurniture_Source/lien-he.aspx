@@ -4,8 +4,8 @@
 <%@ Register TagPrefix="asp" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit, Version=3.5.40412.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
 <%@ Register TagPrefix="asp" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI, Version=2012.3.1016.35, Culture=neutral, PublicKeyToken=121fae78165ba3d4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <title>MC</title>
-    <meta name="description" content="MC" />
+    <title>Liên Hệ</title>
+    <meta name="description" content="Liên Hệ" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div id="site" class="corner">

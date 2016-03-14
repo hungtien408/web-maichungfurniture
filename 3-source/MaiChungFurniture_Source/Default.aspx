@@ -2,8 +2,8 @@
     CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <title>MC</title>
-    <meta name="description" content="MC" />
+    <title>Nội Thất Mai Chung</title>
+    <meta name="description" content="Nội Thất Mai Chung" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div id="banner">
