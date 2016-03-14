@@ -20,16 +20,72 @@
                 <div class="address-contact">
                     <h4 class="text-uppercase">
                         địa chỉ của chúng tôi</h4>
-                    <div class="wrap-node">
-                        Resourceful significant international agriculture underprivileged; world problem
-                        solving, improving quality local solutions technology developing nations transform
-                        the world. Medical advocate social entrepreneurship.</div>
-                    <p>
-                        <span class="fa fa-map-marker"></span>39 Ngô Gia Tự, Phương 2, Quận 10, Tp.HCM</p>
-                    <p>
-                        <span class="fa fa-phone"></span>094 456 9394</p>
-                    <p>
-                        <span class="fa fa-envelope"></span><a href="mailto:chung.furniture@gmail.com">chung.furniture@gmail.com</a></p>
+                    <asp:ListView ID="lstContentContact" runat="server" DataSourceID="odsContentContact"
+                        EnableModelValidation="True">
+                        <ItemTemplate>
+                            <div class="wrap-node">
+                                <%# Eval("Content") %></div>
+                        </ItemTemplate>
+                        <LayoutTemplate>
+                            <span runat="server" id="itemPlaceholder" />
+                        </LayoutTemplate>
+                    </asp:ListView>
+                    <asp:ObjectDataSource ID="odsContentContact" runat="server" SelectMethod="ArticleSelectAll"
+                        TypeName="TLLib.Article">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="1" Name="StartRowIndex" Type="String" />
+                            <asp:Parameter DefaultValue="1" Name="EndRowIndex" Type="String" />
+                            <asp:Parameter Name="Keyword" Type="String" />
+                            <asp:Parameter Name="ArticleTitle" Type="String" />
+                            <asp:Parameter Name="Description" Type="String" />
+                            <asp:Parameter DefaultValue="3" Name="ArticleCategoryID" Type="String" />
+                            <asp:Parameter Name="Tag" Type="String" />
+                            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                            <asp:Parameter Name="IsHot" Type="String" />
+                            <asp:Parameter Name="IsNew" Type="String" />
+                            <asp:Parameter Name="FromDate" Type="String" />
+                            <asp:Parameter Name="ToDate" Type="String" />
+                            <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                            <asp:Parameter Name="Priority" Type="String" />
+                            <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                    <asp:ListView ID="lstContact" runat="server" DataSourceID="odsContact" EnableModelValidation="True">
+                        <ItemTemplate>
+                            <p>
+                                <span class="fa fa-map-marker"></span>
+                                <%# Eval("MetaTittle") %></p>
+                            <p>
+                                <span class="fa fa-phone"></span>
+                                <%# Eval("MetaDescription")%></p>
+                            <p>
+                                <span class="fa fa-envelope"></span><a href='<%# "mailto:" + Eval("ArticleTitle")%>'>
+                                    <%# Eval("ArticleTitle")%></a></p>
+                        </ItemTemplate>
+                        <LayoutTemplate>
+                            <span runat="server" id="itemPlaceholder" />
+                        </LayoutTemplate>
+                    </asp:ListView>
+                    <asp:ObjectDataSource ID="odsContact" runat="server" SelectMethod="ArticleSelectAll"
+                        TypeName="TLLib.Article">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="1" Name="StartRowIndex" Type="String" />
+                            <asp:Parameter DefaultValue="1" Name="EndRowIndex" Type="String" />
+                            <asp:Parameter Name="Keyword" Type="String" />
+                            <asp:Parameter Name="ArticleTitle" Type="String" />
+                            <asp:Parameter Name="Description" Type="String" />
+                            <asp:Parameter DefaultValue="2" Name="ArticleCategoryID" Type="String" />
+                            <asp:Parameter Name="Tag" Type="String" />
+                            <asp:Parameter Name="IsShowOnHomePage" Type="String" />
+                            <asp:Parameter Name="IsHot" Type="String" />
+                            <asp:Parameter Name="IsNew" Type="String" />
+                            <asp:Parameter Name="FromDate" Type="String" />
+                            <asp:Parameter Name="ToDate" Type="String" />
+                            <asp:Parameter DefaultValue="True" Name="IsAvailable" Type="String" />
+                            <asp:Parameter Name="Priority" Type="String" />
+                            <asp:Parameter DefaultValue="True" Name="SortByPriority" Type="String" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
                 </div>
             </div>
             <div class="col-md-6">
