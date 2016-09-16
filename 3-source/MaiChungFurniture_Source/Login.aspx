@@ -62,7 +62,7 @@
                                             <td class="login-col-1">
                                             </td>
                                             <td class="login-col-2 forgot-link">
-                                                <a href="recovery-password.aspx">Forgot Your Password?</a>
+                                                <a href="RecoveryPassword.aspx">Forgot Your Password?</a>
                                             </td>
                                         </tr>
                                     </table>

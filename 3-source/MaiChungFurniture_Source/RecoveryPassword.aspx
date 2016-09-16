@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/site.master" AutoEventWireup="true"
     CodeFile="RecoveryPassword.aspx.cs" Inherits="RecoveryPassword" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cphBody" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div align="center" style="margin: 0; padding: 0">
         <asp:PasswordRecovery ID="PasswordRecovery1" runat="server" 
             onsendingmail="PasswordRecovery1_SendingMail">
